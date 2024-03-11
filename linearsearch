@@ -1,3 +1,5 @@
+<head>
+<body>
 Function Main
     ... in dit programma kan de user een getal noemen. Door gebruik van linear search kan het systeem vertellen of het getal in de rij staat en waar.
     Declare Integer zoekGetal, i
@@ -36,3 +38,5 @@ Function Main
         Output zoekGetal & " staat op plek " & i
     End
 End
+</body>
+</head>
