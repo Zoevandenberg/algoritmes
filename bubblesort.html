@@ -16,10 +16,13 @@
 
     // Met deze for-loop worden alle getallen in de rij gezet.
     window.alert("De oorspronkelijke rij ziet er als volgt uit: ");
-    for (i = 0; i <= rijgrootte - 2; i++) {
-        window.alert(getallenRij[i].ToString() + "  ");
+    var text1, text2;
+
+    text1 = "";
+    for (i = 0; i <= rijgrootte - 1; i++) {
+        text1 = text1 + "  " + getallenRij[i];
     }
-    window.alert(getallenRij[rijgrootte - 1]);
+    window.alert(text1);
     var temp;
     var teller;
 
@@ -65,9 +68,11 @@
         }
     }
     window.alert("De gesorteerde rij ziet er als volgt uit: ");
+    text2 = "";
     for (i = 0; i <= rijgrootte - 1; i++) {
-        window.alert(getallenRij[i].ToString() + "  ");
+        text2 = text2 + "  " + getallenRij[i];
     }
+    window.alert(text2);
 </script>    
 </body>
 </html>
