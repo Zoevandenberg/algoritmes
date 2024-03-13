@@ -1,0 +1,73 @@
+<html> 
+<body>
+<script>
+    // Dit systeem sorteert getallen door middel van bubblesort. Bubblesort vergelijkt 2 getallen, en zet dat het kleinste getal bovenaan. Zo gaat het programma door totdat de lijst gesorteerd is.
+    var i, rijgrootte, keuze;
+
+    // rijgrootte is hoe groot de user de lijst wil hebben, keuze is hoe de user de lijst gesorteerd wil hebben
+    window.alert("Hoe groot moet de lijst zijn?");
+    rijgrootte = Number(window.prompt('Enter a value for rijgrootte'));
+    var getallenRij = [rijgrootte];
+
+    // Omdat de grootte van deze array rijgrootte is, zal de lijst ook de grootte aanhouden die de user graag wil.
+    for (i = 0; i <= rijgrootte - 1; i++) {
+        getallenRij[i] = Math.floor(Math.random() * 100);
+    }
+
+    // Met deze for-loop worden alle getallen in de rij gezet.
+    window.alert("De oorspronkelijke rij ziet er als volgt uit: ");
+    for (i = 0; i <= rijgrootte - 2; i++) {
+        window.alert(getallenRij[i].ToString() + "  ");
+    }
+    window.alert(getallenRij[rijgrootte - 1]);
+    var temp;
+    var teller;
+
+    window.alert("Als je de rij van klein naar groot wil sorteren, kies dan optie 1. Voor de gesorteerde rij van groot naar klein, kies optie 2.");
+    keuze = Number(window.prompt('Enter a value for keuze'));
+    if (keuze == 1) {
+        for (teller = 1; teller <= rijgrootte; teller++) {
+
+            // Deze for-loop zorgt ervoor dat het proces hieronder zich herhaalt, net zo lang tot de hele lijst is gesorteerd.
+            for (i = 0; i <= rijgrootte - 2; i++) {
+
+                // Met deze loop wordt gesorteerd. Hij werkt de hele lijst door.
+                if (getallenRij[i] > getallenRij[i + 1]) {
+
+                    // Hieronder is het proces van sorteren weergeven. Het getal dat wordt vervangen wordt tijdelijk opgeslagen in de variabele temp. Vervolgens wordt hij op de lagere plek neergezet, en dit proces herhaalt zich telkens.
+                    temp = getallenRij[i];
+                    getallenRij[i] = getallenRij[i + 1];
+                    getallenRij[i + 1] = temp;
+                } else {
+
+                    // In dit geval is het eerste getal in de lijst lager dan het tweede getal. Dan gaat het systeem door naar het volgende getal.
+                }
+            }
+        }
+    } else {
+        for (teller = 1; teller <= rijgrootte; teller++) {
+
+            // Deze for-loop zorgt ervoor dat het proces hieronder zich herhaalt, net zo lang tot de hele lijst is gesorteerd.
+            for (i = 0; i <= rijgrootte - 2; i++) {
+
+                // Met deze loop wordt gesorteerd. Hij werkt de hele lijst door.
+                if (getallenRij[i] < getallenRij[i + 1]) {
+
+                    // Hieronder is het proces van sorteren weergeven. Het getal dat wordt vervangen wordt tijdelijk opgeslagen in de variabele temp. Vervolgens wordt hij op de lagere plek neergezet, en dit proces herhaalt zich telkens.
+                    temp = getallenRij[i];
+                    getallenRij[i] = getallenRij[i + 1];
+                    getallenRij[i + 1] = temp;
+                } else {
+
+                    // In dit geval is het eerste getal in de lijst lager dan het tweede getal. Dan gaat het systeem door naar het volgende getal.
+                }
+            }
+        }
+    }
+    window.alert("De gesorteerde rij ziet er als volgt uit: ");
+    for (i = 0; i <= rijgrootte - 1; i++) {
+        window.alert(getallenRij[i].ToString() + "  ");
+    }
+</script>    
+</body>
+</html>
