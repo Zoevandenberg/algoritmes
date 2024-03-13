@@ -3,41 +3,48 @@
     <script>
     // in dit programma kan de user een getal noemen. Door gebruik van linear search kan het systeem vertellen of het getal in de rij staat en waar.
     var zoekGetal, i;
-    var getallenRij = [10];
+    var getallenRij = [50];
 
     // zoekGetal is wat de user invult. de i functioneert als plek waarop alle getallen staan, dus plek 0 t/m 9.
     // De array getallenRij is dus de daadwerkelijke rij met de willekeurige getallen. Deze heeft tien plekken.
-    for (i = 0; i <= 9; i++) {
+    for (i = 0; i <= 49; i++) {
         getallenRij[i] = Math.floor(Math.random() * 100);
     }
 
     // Met deze for-loop worden alle getallen in de rij gezet.
-    window.alert("Welk getal wil je zoeken: ");
+    window.alert("Welk getal wil je zoeken?");
     zoekGetal = Number(window.prompt('Enter a value for zoekGetal'));
+    window.alert("De rij ziet er als volgt uit:");
+    var text;
+
+    text = " ";
+    for (i = 0; i <= 49; i++) {
+        text = text + " " + getallenRij[i];
+    }
+    window.alert(text);
     i = 0;
 
     // Wat moet er in de WHILE-lus komen om het algoritme te laten werken?
-    while (i < 9 && zoekGetal != getallenRij[i]) {
+    while (i < 49 && zoekGetal != getallenRij[i]) {
         i = i + 1;
     }
 
     // Door het assign-element loopt het systeem constant door de loop heen, totdat het einde van de rij is bereikt.
-    if (i == 9) {
+    if (i == 49) {
 
-        // Als i wel 9 is, zijn er twee opties: of het getal staat op plek 9, of het getal staat niet in de rij.
+        // Als i wel 49 is, zijn er twee opties: of het getal staat op plek 49, of het getal staat niet in de rij.
         if (getallenRij[i] == zoekGetal) {
             window.alert(zoekGetal.toString() + " staat op plek " + i);
         } else {
-            window.alert("Getal niet gevonden.");
+            window.alert("Het getal staat niet in de rij.");
         }
 
-        // Dmv dit if-statement komt het systeem erachter of het getal op plek 9 staat of niet.
+        // Dmv dit if-statement komt het systeem erachter of het getal op plek 49 staat of niet.
     } else {
 
-        // Als i < 9, dan krijgt de user het resulraat te zien (i > 9 is niet mogelijk om te hebben, vandaar).
+        // Als i < 49, dan krijgt de user het resulraat te zien (i > 49 is niet mogelijk om te hebben, vandaar).
         window.alert(zoekGetal.toString() + " staat op plek " + i);
     }
-
 </script>
 </body>
 </html>
