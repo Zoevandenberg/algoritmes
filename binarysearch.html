@@ -1,7 +1,88 @@
 <html>
 <head>
 <script>
-// hallo!! // 
+    // Dit programma lijkt op linear search, maar het zoeken gebeurt handiger. Het systeem gebruikt het midden van de gesorteerde rij om te kijken waar het gezochte getal zit ipv de hele rij door te gaan.
+    var rijgrootte, i;
+
+    window.alert("Hoe groot moet de lijst zijn?");
+    rijgrootte = Number(window.prompt('Enter a value for rijgrootte'));
+    var getallenRij = [rijgrootte];
+
+    // Omdat de grootte van deze array rijgrootte is, zal de lijst ook de grootte aanhouden die de user graag wil.
+    for (i = 0; i <= rijgrootte - 1; i++) {
+        getallenRij[i] = Math.floor(Math.random() * 100);
+    }
+
+    // in deze loop wordt de rij gegeneerd. de user kiest dus zelf hoe groot deze is.
+    bubblesort(getallenRij, rijgrootte);
+
+    // Hiermee roep ik de functie bubblesort aan. Dit zorgt ervoor dat de rij al gesorteerd is zonder onnodige code in de main-functie te plaatsen.
+    var zoekgetal, gevondenplaats, begin, eind, midden;
+
+    window.alert("Wat is het getal dat je wil zoeken?. Je kan elk getal van 0 t/m 100 kiezen.");
+    zoekgetal = Number(window.prompt('Enter a value for zoekgetal'));
+    begin = 0;
+    eind = getallenRij.length - 1;
+
+    // hier wordt het begin en het eind van de rij bepaald. begin is altijd 0, en eind hangt af van de rijgrootte.
+    var gevonden;
+
+    gevonden = false;
+    while (begin <= eind) {
+
+        // In deze while-loop gebeurt het sorteren. Elke keer als het getal niet in het 'midden' wordt gevonden, kijkt het systeem of het getal hoger dan midden is. Zo blijft het midden steeds opschuiven, waardoor uiteindelijk de hele lijst is doorgewerkt.
+        midden = (double) (begin + eind) / 2;
+
+        // Hier wordt het midden van de rij bepaald. Deze wordt afgerond, aangezien er integers gebruikt worden.
+        if (zoekgetal == getallenRij[midden]) {
+
+            // Het gezochte getal staat in het midden van de lijst, dus begin > eind. De loop wordt verlaten.
+            begin = eind + 1;
+            gevonden = true;
+        } else {
+            if (zoekgetal > getallenRij[midden]) {
+
+                // het getal staat op een hogere plek dan het midden in de lijst. Het midden schuift op naar boven.
+                begin = midden + 1;
+            } else {
+                eind = midden - 1;
+
+                // Het getal staat of op een lagere plek dan het midden, of het staat niet in de lijst. Door deze loop te herhalen komt het systeem daar achter.
+            }
+        }
+    }
+    gevondenplaats = midden;
+
+    // hier komt het gebruik van de boolean te pas. Alleen als gevonden = true (te zien in het eerste if-statement), zal de goede plaats van het getal aan de user worden doorgegeven.
+    if (gevonden) {
+        window.alert("Nummer " + zoekgetal + " staat in de rij, op plek " + gevondenplaats);
+    } else {
+        window.alert("Het getal " + zoekgetal + " staat er niet in.");
+    }
+
+function bubblesort(getallenRij, rijgrootte) {
+    var i, temp, teller;
+
+    for (teller = 1; teller <= rijgrootte; teller++) {
+
+        // Deze for-loop zorgt ervoor dat het proces hieronder zich herhaalt, net zo lang tot de hele lijst is gesorteerd.
+        for (i = 0; i <= rijgrootte - 2; i++) {
+
+            // Met deze loop wordt gesorteerd. Hij werkt de hele lijst door.
+            if (getallenRij[i] > getallenRij[i + 1]) {
+
+                // Hieronder is het proces van sorteren weergeven. Het getal dat wordt vervangen wordt tijdelijk opgeslagen in de variabele temp. Vervolgens wordt hij op de lagere plek neergezet, en dit proces herhaalt zich telkens.
+                temp = getallenRij[i];
+                getallenRij[i] = getallenRij[i + 1];
+                getallenRij[i + 1] = temp;
+            } else {
+
+                // In dit geval is het eerste getal in de lijst lager dan het tweede getal. Dan gaat het systeem door naar het volgende getal.
+            }
+        }
+    }
+}
+
 </script>
 </head>
 </html>
