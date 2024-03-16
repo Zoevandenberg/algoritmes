@@ -1,12 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
 <script>
+function main() {
     // Dit programma lijkt op linear search, maar het zoeken gebeurt handiger. Het systeem gebruikt het midden van de gesorteerde rij om te kijken waar het gezochte getal zit ipv de hele rij door te gaan.
     var rijgrootte, i;
 
     window.alert("Hoe groot moet de lijst zijn?");
     rijgrootte = Number(window.prompt('Enter a value for rijgrootte'));
-    var getallenRij = [rijgrootte];
+    var getallenRij = createArray(rijgrootte);
 
     // Omdat de grootte van deze array rijgrootte is, zal de lijst ook de grootte aanhouden die de user graag wil.
     for (i = 0; i <= rijgrootte - 1; i++) {
@@ -31,14 +33,15 @@
     while (begin <= eind) {
 
         // In deze while-loop gebeurt het sorteren. Elke keer als het getal niet in het 'midden' wordt gevonden, kijkt het systeem of het getal hoger dan midden is. Zo blijft het midden steeds opschuiven, waardoor uiteindelijk de hele lijst is doorgewerkt.
-        midden = (begin + eind) / 2;
+        midden = Math.floor((begin + eind) / 2);
 
         // Hier wordt het midden van de rij bepaald. Deze wordt afgerond, aangezien er integers gebruikt worden.
         if (zoekgetal == getallenRij[midden]) {
 
             // Het gezochte getal staat in het midden van de lijst, dus begin > eind. De loop wordt verlaten.
-            begin = eind + 1;
+            gevondenplaats = midden;
             gevonden = true;
+            break;
         } else {
             if (zoekgetal > getallenRij[midden]) {
 
@@ -51,7 +54,6 @@
             }
         }
     }
-    gevondenplaats = midden;
 
     // hier komt het gebruik van de boolean te pas. Alleen als gevonden = true (te zien in het eerste if-statement), zal de goede plaats van het getal aan de user worden doorgegeven.
     if (gevonden) {
@@ -59,6 +61,12 @@
     } else {
         window.alert("Het getal " + zoekgetal + " staat er niet in.");
     }
+}
+
+function createArray(size) {
+    var array = new Array(size);
+    return array;
+}
 
 function bubblesort(getallenRij, rijgrootte) {
     var i, temp, teller;
@@ -82,7 +90,8 @@ function bubblesort(getallenRij, rijgrootte) {
         }
     }
 }
-
 </script>
 </head>
+<body onload="main()">
+</body>
 </html>
